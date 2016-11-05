@@ -24,7 +24,7 @@ mkdir -p log
 $UNITY_PATH -batchmode -projectPath $pth -executeMethod ProjectBuild.BuildForIPhone -scriptingdefinesymbols $ScriptingDefineSymbols -quit -logFile $pth/log/ios.log
 echo "End Build Unity to XCodeProject"
 
-xcodeprojpath=$pth/Platform/iOS/$projectname
+xcodeprojpath=$pth/$projectname
 
 echo "Start Build XCodeProject"
 #开始生成ipa#
