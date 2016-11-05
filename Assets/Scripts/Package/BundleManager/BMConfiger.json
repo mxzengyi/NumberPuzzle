@@ -1,0 +1,10 @@
+{
+    "Compress" : false,    
+    "DeterministicBundle" : false,    
+    "BundleSuffix" : "ph",    
+    "BuildOutputPath" : "",    
+    "UseCache" : false,    
+    "DownloadThreadsCount" : 1,    
+    "DownloadRetryTime" : 2,    
+    "BmVersion" : 0
+}

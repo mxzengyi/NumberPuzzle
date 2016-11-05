@@ -1,0 +1,19 @@
+{
+    "downloadUrls" : 
+    {
+        "Android" : "$(StreamingAssetsPath)/AssetBundles/",        
+        "IOS" : "$(DataPath)/../AssetBundle/$(Platform)",        
+        "Standalones" : "$(DataPath)/../AssetBundle/$(Platform)",        
+        "WebPlayer" : "$(DataPath)/../AssetBundle/$(Platform)"
+    },    
+    "outputs" : 
+    {
+        "Android" : "IIPSPackTools/AssetBundles",        
+        "IOS" : "$(DataPath)/../AssetBundle/$(Platform)",        
+        "Standalones" : "$(DataPath)/../AssetBundle/$(Platform)",        
+        "WebPlayer" : "$(DataPath)/../AssetBundle/$(Platform)"
+    },    
+    "bundleTarget" : 3,    
+    "useEditorTarget" : false,    
+    "downloadFromOutput" : true
+}

@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumberPuzzle.CSharp", "NumberPuzzle.CSharp.csproj", "{A726A7E2-687E-B851-7EBD-BAE5C5B535F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumberPuzzle.CSharp.Editor", "NumberPuzzle.CSharp.Editor.csproj", "{4C317617-BDF7-C82E-3D4B-D0F5AFBB5C38}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A726A7E2-687E-B851-7EBD-BAE5C5B535F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A726A7E2-687E-B851-7EBD-BAE5C5B535F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A726A7E2-687E-B851-7EBD-BAE5C5B535F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A726A7E2-687E-B851-7EBD-BAE5C5B535F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C317617-BDF7-C82E-3D4B-D0F5AFBB5C38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C317617-BDF7-C82E-3D4B-D0F5AFBB5C38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C317617-BDF7-C82E-3D4B-D0F5AFBB5C38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C317617-BDF7-C82E-3D4B-D0F5AFBB5C38}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

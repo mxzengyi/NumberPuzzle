@@ -1,0 +1,36 @@
+#!/bin/sh
+ 
+#工程名#
+projectname=NumberPuzzle 
+ 
+ 
+pth=`pwd`
+#UNITY程序的路径#
+SDK=iphoneos
+UNITY_PATH=/Applications/Unity/Unity.app/Contents/MacOS/Unity
+
+echo "CompileEnv:"
+echo $pth
+echo $SDK
+echo $UNITY_PATH
+echo $ScriptingDefineSymbols 
+ 
+rm -rf result/*.ipa
+mkdir -p result
+mkdir -p log
+ 
+ 
+#将unity导出成xcode工程#
+$UNITY_PATH -batchmode -projectPath $pth -executeMethod ProjectBuild.BuildForIPhone -scriptingdefinesymbols $ScriptingDefineSymbols -quit -logFile $pth/log/ios.log
+echo "End Build Unity to XCodeProject"
+
+xcodeprojpath=$pth/Platform/iOS/$projectname
+
+echo "Start Build XCodeProject"
+#开始生成ipa#
+cd $xcodeprojpath
+xcodebuild -sdk $SDK clean
+xcodebuild -sdk $SDK
+xcrun -sdk $SDK PackageApplication -v $xcodeprojpath/build/*.app -o $pth/result/$projectname.ipa
+ 
+echo "ipa生成完毕"
