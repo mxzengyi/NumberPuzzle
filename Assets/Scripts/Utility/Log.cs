@@ -545,14 +545,6 @@ public class Log
         return sb;
     }
 
-#if UNITY_IPHONE
-    [DllImport("__Internal")]
-    public static extern void SaveUnityStackTrace(string info);
-
-    [DllImport("__Internal")]
-    public static extern void CrashApplication();
-#endif
-
 
     private void PrintMessage(LogMessage msg)
     {

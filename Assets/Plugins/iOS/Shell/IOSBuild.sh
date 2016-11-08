@@ -31,6 +31,11 @@ echo "Start Build XCodeProject"
 cd $xcodeprojpath
 xcodebuild -sdk $SDK clean
 xcodebuild -sdk $SDK
-xcrun -sdk $SDK PackageApplication -v $xcodeprojpath/build/*.app -o $pth/result/$projectname.ipa
+
+
+echo "compile success!!!!!!!!!!!"
+
+
+xcrun -sdk $SDK PackageApplication -v $xcodeprojpath/build/Release-iphoneos/*.app -o $pth/result/$projectname.ipa
  
 echo "ipa生成完毕"
