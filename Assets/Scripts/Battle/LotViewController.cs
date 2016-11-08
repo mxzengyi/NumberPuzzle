@@ -17,6 +17,11 @@ public class LotViewController : MonoBehaviour {
         _model = LotPlayer.Instance();
         View.Initionlize();
         View.InitByData(_playerInfo, _model);
+
+        if (_playerInfo.CurAtt.Gold < _model.GetCurrentTurnGameCost(false))
+        {
+            View.ShowCostNotEnough();
+        }
     }
 
     public void OnNumClick(Button btn)
@@ -28,10 +33,10 @@ public class LotViewController : MonoBehaviour {
             View.ShowNum(index, num.ToString());
         }
 
-        if (_model.MeetMaxNum())
-        {
-            View.ShowMessage("已经点击" + _model.MaxShowNum+"次，现在可以点击方向按钮获得积分了！");
-        }
+        //if (_model.MeetMaxNum())
+        //{
+        //    View.ShowMessage("已经点击" + _model.MaxShowNum+"次，现在可以点击方向按钮获得积分了！");
+        //}
     }
 
     public void OnDirectionClick(Button btn)
@@ -42,7 +47,14 @@ public class LotViewController : MonoBehaviour {
             int sum = _model.GetSum(direction);
             int score = _model.GetScore(sum);
 
-            View.ShowMessage("Sum="+sum+",可获得" + score + "点积分！");
+            if (score == 6)
+            {
+                View.ShowMessage("<color=#D1FF00>Congratulation ! Luck 6 ! </color>"); 
+            }
+            else
+            {
+                View.ShowMessage("<color=#00FF0C>Sum " + sum + " Own " + score + " Score！</color>");   
+            }
 
 
             View.SetCurScore(_playerInfo.CurAtt.Gold + score);
@@ -58,7 +70,38 @@ public class LotViewController : MonoBehaviour {
             {
                 _model.Refresh();
                 View.InitByData(_playerInfo, _model);
+                View.ShowCostPage(_model.GetCurrentTurnGameCost(false));
             },4.0f));
+        }
+    }
+
+
+    public void OnTutorialClick(GameObject root)
+    {
+        root.SetActive(false);
+    }
+
+
+    public void OnCostPageClick()
+    {
+        if (_playerInfo.CurAtt.Gold >= _model.GetCurrentTurnGameCost(false))
+        {
+            View.SetCurScore(_playerInfo.CurAtt.Gold - _model.GetCurrentTurnGameCost(true));
+            View.HideCostPage();
+        }
+        else
+        {
+            View.ShowCostNotEnough();
+        }
+    }
+
+
+    public void OnCostNotEnoughClick()
+    {
+        if (_playerInfo.CurAtt.Gold >= _model.GetCurrentTurnGameCost(false))
+        {
+            View.SetCurScore(_playerInfo.CurAtt.Gold - _model.GetCurrentTurnGameCost(true));
+            View.HideCostPage();
         }
     }
 }

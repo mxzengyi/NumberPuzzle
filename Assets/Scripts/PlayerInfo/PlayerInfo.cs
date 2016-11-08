@@ -46,11 +46,25 @@ public class playerAtt
             PlayerPrefs.SetInt("Gold", value);
         }
     }
+
+    public string Date
+    {
+        get
+        {
+            return PlayerPrefs.GetString("Date", "-1");
+        }
+        set
+        {
+            PlayerPrefs.SetString("Date", value);
+        }
+    }
+
+
     public int Level
     {
         get
         {
-            return PlayerPrefs.GetInt("Level", 1);
+            return PlayerPrefs.GetInt("Level", 0);
         }
         set
         {

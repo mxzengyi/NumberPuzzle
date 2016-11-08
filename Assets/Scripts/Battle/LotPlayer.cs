@@ -82,6 +82,39 @@ public class LotPlayer {
     }
 
 
+    public int GetCurrentTurnGameCost(bool force)
+    {
+        if (force)
+        {
+            if (PlayerInfo.Instance().CurAtt.Date.Equals(System.DateTime.Now.ToShortDateString()))
+            {
+                PlayerInfo.Instance().CurAtt.Level++;
+            }
+            else
+            {
+                PlayerInfo.Instance().CurAtt.Date = System.DateTime.Now.ToShortDateString();
+                PlayerInfo.Instance().CurAtt.Level = 0;
+            }
+
+            int level = PlayerInfo.Instance().CurAtt.Level;
+            return level > 6 ? 6*100 : level*100;
+        }
+        else
+        {
+            int level = PlayerInfo.Instance().CurAtt.Level;
+            if (PlayerInfo.Instance().CurAtt.Date.Equals(System.DateTime.Now.ToShortDateString()))
+            {
+                level++;
+            }
+            else
+            {
+                level = 0;
+            }
+            return level > 6 ? 6 * 100 : level * 100;
+        }
+    }
+
+
     public int ShowNumAtIndex(int index)
     {
         if (!data[index].Value)

@@ -13,12 +13,24 @@ public class LotView : MonoBehaviour {
 
     public Text CurScore;
 
+    public RectTransform TutorialRoot;
+
+    public RectTransform CostPageRoot;
+
+    public RectTransform CostRoot;
+
+    public RectTransform CostNotEnoughRoot;
+
+
 
     public Button[] Nums;
 
     public Button[] Directions;
 
     public RectTransform[] ScoreItems;
+
+
+    private Text costText;
 
     public Text MessageBox;
 
@@ -51,6 +63,15 @@ public class LotView : MonoBehaviour {
 
 
         CurScore.text = PlayerInfo.Instance().CurAtt.Gold.ToString();
+
+
+        if (PlayerInfo.Instance().CurAtt.FirstLogin)
+        {
+            TutorialRoot.gameObject.SetActive(true);
+            PlayerInfo.Instance().CurAtt.FirstLogin = false;
+        }
+
+
     }
 
 
@@ -106,6 +127,14 @@ public class LotView : MonoBehaviour {
 
     public void ShowNum(int index, string Num)
     {
+        if (Num.Equals("?"))
+        {
+            Nums[index].targetGraphic.color=Color.white;
+        }
+        else
+        {
+            Nums[index].targetGraphic.color = Color.green;
+        }
         Text text = Nums[index].transform.FindChild("Text").GetComponent<Text>();
         text.text = Num;
     }
@@ -148,6 +177,32 @@ public class LotView : MonoBehaviour {
     }
 
 
+    public void ShowCostPage(int cost)
+    {
+        CostPageRoot.gameObject.SetActive(true);
+        CostRoot.gameObject.SetActive(true);
+        if (costText==null)
+        {
+            costText = CostRoot.transform.FindChild("rules").GetComponent<Text>();
+        }
+        costText.text = "Current Game Turn Will Cost " + cost + " Scores.";
+
+        CostNotEnoughRoot.gameObject.SetActive(false);
+    }
+
+    public void ShowCostNotEnough()
+    {
+        CostPageRoot.gameObject.SetActive(true);
+        CostRoot.gameObject.SetActive(false);
+        CostNotEnoughRoot.gameObject.SetActive(true);
+    }
+
+
+    public void HideCostPage()
+    {
+        CostPageRoot.gameObject.SetActive(false);
+    }
+
     void Update()
     {
         if (ScoreChange)
@@ -172,6 +227,11 @@ public class LotView : MonoBehaviour {
         if (Input.GetKey(KeyCode.F))
         {
             SetCurScore(1000);
+        }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            PlayerInfo.Instance().CurAtt.Date="-1";
         }
     }
 }
