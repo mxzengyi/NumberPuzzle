@@ -21,7 +21,7 @@ public class LotView : MonoBehaviour {
 
     public RectTransform CostNotEnoughRoot;
 
-
+    public RectTransform HightLight;
 
     public Button[] Nums;
 
@@ -147,6 +147,13 @@ public class LotView : MonoBehaviour {
     }
 
 
+    public void HightLightScore(int index)
+    {
+        HightLight.gameObject.SetActive(true);
+        HightLight.position = ScoreItems[index].transform.position+new Vector3(26,0,0);
+    }
+
+
     public void ShowMessage(string content)
     {
         GameObject message = Instantiate(MessageBox.gameObject) as GameObject;
@@ -185,7 +192,7 @@ public class LotView : MonoBehaviour {
         {
             costText = CostRoot.transform.FindChild("rules").GetComponent<Text>();
         }
-        costText.text = "Current Game Turn Will Cost " + cost + " Scores.";
+        costText.text = "Next Game Turn Will Cost " + cost + " Scores.";
 
         CostNotEnoughRoot.gameObject.SetActive(false);
     }

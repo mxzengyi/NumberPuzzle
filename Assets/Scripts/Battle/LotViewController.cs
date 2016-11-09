@@ -17,10 +17,10 @@ public class LotViewController : MonoBehaviour {
         _model = LotPlayer.Instance();
         View.Initionlize();
         View.InitByData(_playerInfo, _model);
-
-        if (_playerInfo.CurAtt.Gold < _model.GetCurrentTurnGameCost(false))
+        int cost = _model.GetCurrentTurnGameCost(false);
+        if (cost != 0)
         {
-            View.ShowCostNotEnough();
+            View.ShowCostPage(cost);
         }
     }
 
@@ -47,17 +47,18 @@ public class LotViewController : MonoBehaviour {
             int sum = _model.GetSum(direction);
             int score = _model.GetScore(sum);
 
-            if (score == 6)
+            if (sum == 6)
             {
                 View.ShowMessage("<color=#D1FF00>Congratulation ! Luck 6 ! </color>"); 
             }
-            else
-            {
-                View.ShowMessage("<color=#00FF0C>Sum " + sum + " Own " + score + " Score！</color>");   
-            }
+            //else
+            //{
+            //    View.ShowMessage("<color=#00FF0C>Sum " + sum + " Own " + score + " Score！</color>");   
+            //}
 
 
             View.SetCurScore(_playerInfo.CurAtt.Gold + score);
+            View.HightLightScore(sum-6);
 
             //show all
             for (int i = 0; i < LotPlayer.Count; i++)
