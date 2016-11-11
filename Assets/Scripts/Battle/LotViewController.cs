@@ -6,6 +6,8 @@ public class LotViewController : MonoBehaviour {
 
     public LotView View;
 
+    public IAPController IAPUI;
+
     private PlayerInfo _playerInfo;
 
     private LotPlayer _model;
@@ -21,6 +23,10 @@ public class LotViewController : MonoBehaviour {
         if (cost != 0)
         {
             View.ShowCostPage(cost);
+        }
+        else
+        {
+            _model.GetCurrentTurnGameCost(true);
         }
     }
 
@@ -49,12 +55,22 @@ public class LotViewController : MonoBehaviour {
 
             if (sum == 6)
             {
-                View.ShowMessage("<color=#D1FF00>Congratulation ! Luck 6 ! </color>"); 
+                View.ShowMessage("<color=#D1FF00>Congratulation!Luck 6! </color>"); 
+                View.ShowLuckySixEffect();
             }
-            //else
-            //{
-            //    View.ShowMessage("<color=#00FF0C>Sum " + sum + " Own " + score + " Score！</color>");   
-            //}
+            else
+            {
+                if (score > 1000)
+                {
+                    View.ShowMessage("<color=#D1FF00>Great!Greedy is Good!</color>");
+                    View.ShowGreatEffect();
+                }
+                else
+                {
+                    View.ShowMessage("<color=#D1FF00>What a pity!Come on!</color>");
+                }
+                
+            }
 
 
             View.SetCurScore(_playerInfo.CurAtt.Gold + score);
@@ -72,8 +88,16 @@ public class LotViewController : MonoBehaviour {
                 _model.Refresh();
                 View.InitByData(_playerInfo, _model);
                 View.ShowCostPage(_model.GetCurrentTurnGameCost(false));
+                View.HideLuckySixEffect();
+                View.HideGreatEffect();
             },4.0f));
         }
+    }
+
+
+    public void SetCurScore(int score)
+    {
+        View.SetCurScore(score);
     }
 
 
@@ -97,12 +121,21 @@ public class LotViewController : MonoBehaviour {
     }
 
 
+    public void ShowIAP()
+    {
+        IAPUI.Show();
+    }
+
     public void OnCostNotEnoughClick()
     {
         if (_playerInfo.CurAtt.Gold >= _model.GetCurrentTurnGameCost(false))
         {
             View.SetCurScore(_playerInfo.CurAtt.Gold - _model.GetCurrentTurnGameCost(true));
             View.HideCostPage();
+        }
+        else
+        {
+            ShowIAP();
         }
     }
 }

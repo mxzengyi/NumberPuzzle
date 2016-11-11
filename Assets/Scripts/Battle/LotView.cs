@@ -23,6 +23,11 @@ public class LotView : MonoBehaviour {
 
     public RectTransform HightLight;
 
+
+    public ParticleSystem LuckySixEffect;
+
+    public ParticleSystem GreatEffect;
+
     public Button[] Nums;
 
     public Button[] Directions;
@@ -71,7 +76,8 @@ public class LotView : MonoBehaviour {
             PlayerInfo.Instance().CurAtt.FirstLogin = false;
         }
 
-
+        LuckySixEffect.Clear();
+        LuckySixEffect.Pause();
     }
 
 
@@ -150,7 +156,8 @@ public class LotView : MonoBehaviour {
     public void HightLightScore(int index)
     {
         HightLight.gameObject.SetActive(true);
-        HightLight.position = ScoreItems[index].transform.position+new Vector3(26,0,0);
+        HightLight.position = ScoreItems[index].transform.position;
+        HightLight.localPosition = HightLight.localPosition + new Vector3(25, 0, 0);
     }
 
 
@@ -240,5 +247,33 @@ public class LotView : MonoBehaviour {
         {
             PlayerInfo.Instance().CurAtt.Date="-1";
         }
+    }
+
+
+
+    public void ShowLuckySixEffect()
+    {
+        LuckySixEffect.gameObject.SetActive(true);
+        LuckySixEffect.Clear();
+        LuckySixEffect.Play();
+    }
+
+
+    public void HideLuckySixEffect()
+    {
+        LuckySixEffect.Stop();
+    }
+
+    public void ShowGreatEffect()
+    {
+        GreatEffect.gameObject.SetActive(true);
+        GreatEffect.Clear();
+        GreatEffect.Play();
+    }
+
+
+    public void HideGreatEffect()
+    {
+        GreatEffect.Stop();
     }
 }

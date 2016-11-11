@@ -110,7 +110,7 @@ public enum ELogTag
     NewerQuest,
     TimeDaemon,
     LoadingTime,
-
+    IAP,
     Max,
 }
 

@@ -29,7 +29,7 @@
 
 @end
 
-a
+
 extern "C" bool CanUserPurchase();
 
 

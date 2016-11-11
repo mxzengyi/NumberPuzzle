@@ -97,7 +97,7 @@ public class LotPlayer {
             }
 
             int level = PlayerInfo.Instance().CurAtt.Level;
-            return level > 6 ? 6*100 : level*100;
+            return GetCost(level);
         }
         else
         {
@@ -110,10 +110,15 @@ public class LotPlayer {
             {
                 level = 0;
             }
-            return level > 6 ? 6 * 100 : level * 100;
+            return GetCost(level);
         }
     }
 
+
+    public int GetCost(int level)
+    {
+        return (level * 50) > 600 ? 600 : level * 50;
+    }
 
     public int ShowNumAtIndex(int index)
     {

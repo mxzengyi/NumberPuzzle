@@ -1,7 +1,7 @@
 #!/bin/sh
  
 #工程名#
-projectname=NumberPuzzle 
+projectname=LuckySix 
  
  
 pth=`pwd`
