@@ -63,10 +63,12 @@ public class IAPMger : MonoBehaviour
     // IOS UnitySendMessage,游戏内不要调用
     public void SetProducts(string productsInfo)
     {
-        string[] infos = productsInfo.Split(productSpliter.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+        string[] Spliter1 ={ productSpliter };
+        string[] Spliter2 = { infoSpliter };
+        string[] infos = productsInfo.Split(Spliter1, StringSplitOptions.RemoveEmptyEntries);
         foreach (string info in infos)
         {
-            string[] productinfos = info.Split(infoSpliter.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+            string[] productinfos = info.Split(Spliter2, StringSplitOptions.RemoveEmptyEntries);
             if (productinfos.Count()!=4)
             {
                 Log.E(ELogTag.IAP, "Product info error! " + productsInfo);
@@ -92,7 +94,8 @@ public class IAPMger : MonoBehaviour
 
     public void SetPuchaseState(string info)
     {
-        string[] infos = info.Split(infoSpliter.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+        string[] Spliter2 = { infoSpliter };
+        string[] infos = info.Split(Spliter2, StringSplitOptions.RemoveEmptyEntries);
 
         if (infos.Count()!=3)
         {
@@ -138,7 +141,7 @@ public class IAPMger : MonoBehaviour
     {
         foreach (ProductInfo productInfo in _products)
         {
-            if (productInfo.Equals(id))
+            if (productInfo.ID.Equals(id))
             {
                 return productInfo;
             }

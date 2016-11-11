@@ -116,7 +116,7 @@ static IAPInterface* _instance;
     //验证凭证
     //保存凭证
     
-    NSLog(@"transaction success with productid: %@" , transaction.originalTransaction.payment.productIdentifier);
+    NSLog(@"transaction success with productid: %@" , transaction.payment.productIdentifier);
     [self SendUnityPurchaseState:1 Transaction:transaction];
     [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
 }
