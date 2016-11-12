@@ -405,7 +405,6 @@
     <Compile Include="Assets\Scripts\Utility\AssetManager\Asset.cs" />
     <Compile Include="Assets\Scripts\Utility\AssetManager\AssetManager.cs" />
     <Compile Include="Assets\Scripts\Utility\AssetManager\IAsset.cs" />
-    <Compile Include="Assets\Scripts\Utility\AudioManager.cs" />
     <Compile Include="Assets\Scripts\Utility\CommonTools.cs" />
     <Compile Include="Assets\Scripts\Utility\CoroutineManager.cs" />
     <Compile Include="Assets\Scripts\Utility\IAP\IAPMger.cs" />
