@@ -12,6 +12,8 @@ public class LotViewController : MonoBehaviour {
 
     private LotPlayer _model;
 
+    public AudioPlayer Audioplayer;
+
     IEnumerator Start()
     {
         yield return MainConfigManager.GetInstance().Initialize();
@@ -37,6 +39,7 @@ public class LotViewController : MonoBehaviour {
             int index = View.GetNumIndex(btn);
             int num = _model.ShowNumAtIndex(index);
             View.ShowNum(index, num.ToString());
+            Audioplayer.PlayBall();
         }
 
         //if (_model.MeetMaxNum())
@@ -45,10 +48,13 @@ public class LotViewController : MonoBehaviour {
         //}
     }
 
+    private bool enable = true;
     public void OnDirectionClick(Button btn)
     {
-        if (_model.MeetMaxNum())
+        if (enable && _model.MeetMaxNum())
         {
+            Audioplayer.PlayDirection();
+            enable = false;
             SumDirection direction = View.GetSumDirection(btn);
             int sum = _model.GetSum(direction);
             int score = _model.GetScore(sum);
@@ -90,6 +96,7 @@ public class LotViewController : MonoBehaviour {
                 View.ShowCostPage(_model.GetCurrentTurnGameCost(false));
                 View.HideLuckySixEffect();
                 View.HideGreatEffect();
+                enable = true;
             },4.0f));
         }
     }

@@ -399,11 +399,13 @@
     <Compile Include="Assets\Scripts\Package\LitJson\ParserToken.cs" />
     <Compile Include="Assets\Scripts\Package\PerformancePlugin\Util.cs" />
     <Compile Include="Assets\Scripts\PlayerInfo\PlayerInfo.cs" />
+    <Compile Include="Assets\Scripts\UI\AudioPlayer.cs" />
     <Compile Include="Assets\Scripts\UI\IAP\IAPController.cs" />
     <Compile Include="Assets\Scripts\UI\IAP\IAPView.cs" />
     <Compile Include="Assets\Scripts\Utility\AssetManager\Asset.cs" />
     <Compile Include="Assets\Scripts\Utility\AssetManager\AssetManager.cs" />
     <Compile Include="Assets\Scripts\Utility\AssetManager\IAsset.cs" />
+    <Compile Include="Assets\Scripts\Utility\AudioManager.cs" />
     <Compile Include="Assets\Scripts\Utility\CommonTools.cs" />
     <Compile Include="Assets\Scripts\Utility\CoroutineManager.cs" />
     <Compile Include="Assets\Scripts\Utility\IAP\IAPMger.cs" />
